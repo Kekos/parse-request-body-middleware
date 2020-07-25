@@ -18,11 +18,20 @@
     },
     "require-dev": {
         "nyholm/psr7-server": "^1.0",
-        "nyholm/psr7": "^1.3"
+        "nyholm/psr7": "^1.3",
+        "phpunit/phpunit": "^9.2"
     },
     "autoload": {
         "psr-4": {
             "Kekos\\ParseRequestBodyMiddleware\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kekos\\ParseRequestBodyMiddleware\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
     }
 }
