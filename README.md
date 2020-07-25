@@ -12,7 +12,33 @@ composer require kekos/multipart-form-data-parser
 
 ## Documentation
 
-TODO
+### Supported content types native PHP
+
+MIME type                         | POST | PUT/PATCH
+--------------------------------- | ---- | ---------
+application/json                  |      |
+application/x-www-form-urlencoded |   ✓  |
+multipart/form-data               |   ✓  |
+
+### Supported content types this package
+
+This package acts like a polyfill for unsupported content types (JSON)
+and types only supported in POST methods by PHP.
+
+MIME type                         | POST | PUT/PATCH
+--------------------------------- | ---- | ---------
+application/json                  |   ✓  |     ✓
+application/x-www-form-urlencoded |      |     ✓
+multipart/form-data               |      |     ✓
+
+## Usage
+
+Add the `\Kekos\ParseRequestBodyMiddleware\ParseRequestBodyMiddleware` middleware
+to your PSR-15 handler, and it will populate
+`ServerRequestInterface::getParsedBody()` as array.
+
+The parser will throw \Kekos\ParseRequestBodyMiddleware\ParserException` if
+a malformed JSON body was sent.
 
 ## Bugs and improvements
 
