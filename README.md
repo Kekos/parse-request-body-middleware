@@ -37,7 +37,7 @@ Add the `\Kekos\ParseRequestBodyMiddleware\ParseRequestBodyMiddleware` middlewar
 to your PSR-15 handler, and it will populate
 `ServerRequestInterface::getParsedBody()` as array.
 
-The parser will throw \Kekos\ParseRequestBodyMiddleware\ParserException` if
+The parser will throw `\Kekos\ParseRequestBodyMiddleware\ParserException` if
 a malformed JSON body was sent.
 
 ## Bugs and improvements
