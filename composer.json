@@ -10,9 +10,9 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.2 || ~8.0.0",
         "ext-json": "*",
-        "kekos/multipart-form-data-parser": "^1.0",
+        "kekos/multipart-form-data-parser": "^1.1",
         "psr/http-factory": "^1.0",
         "psr/http-message": "^1.0",
         "psr/http-server-middleware": "^1.0"
