@@ -9,8 +9,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class ParseRequestBodyMiddleware implements MiddlewareInterface
 {
-    /** @var Parser */
-    private $parser;
+    private \Kekos\ParseRequestBodyMiddleware\Parser $parser;
 
     public function __construct(Parser $parser)
     {

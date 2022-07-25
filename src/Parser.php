@@ -17,10 +17,8 @@ use const JSON_ERROR_NONE;
 
 class Parser
 {
-    /** @var UploadedFileFactoryInterface */
-    private $uploaded_file_factory;
-    /** @var StreamFactoryInterface */
-    private $stream_factory;
+    private UploadedFileFactoryInterface $uploaded_file_factory;
+    private StreamFactoryInterface $stream_factory;
 
     public function __construct(
         UploadedFileFactoryInterface $uploaded_file_factory,

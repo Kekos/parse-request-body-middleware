@@ -21,10 +21,8 @@ use const JSON_ERROR_NONE;
 
 class ParserTest extends TestCase
 {
-    /** @var Psr17Factory */
-    private static $psr17_factory;
-    /** @var Parser */
-    private static $parser;
+    private static Psr17Factory $psr17_factory;
+    private static Parser $parser;
 
     public static function setUpBeforeClass(): void
     {
@@ -144,14 +142,14 @@ class ParserTest extends TestCase
 
         $body = <<<EOF
 --$boundary\r
-Content-Disposition: form-data; name="{$data_name}"\r
+Content-Disposition: form-data; name="$data_name"\r
 \r
-{$data_value}\r
+$data_value\r
 --$boundary\r
-Content-Disposition: form-data; name="{$file_key}"; filename="{$file_name}"\r
-Content-Type: {$file_mime}\r
+Content-Disposition: form-data; name="$file_key"; filename="$file_name"\r
+Content-Type: $file_mime\r
 \r
-{$file_contents}\r
+$file_contents\r
 --$boundary--\r
 EOF;
 
