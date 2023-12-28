@@ -17,15 +17,11 @@ use const JSON_ERROR_NONE;
 
 class Parser
 {
-    private UploadedFileFactoryInterface $uploaded_file_factory;
-    private StreamFactoryInterface $stream_factory;
-
     public function __construct(
-        UploadedFileFactoryInterface $uploaded_file_factory,
-        StreamFactoryInterface $stream_factory
-    ) {
-        $this->uploaded_file_factory = $uploaded_file_factory;
-        $this->stream_factory = $stream_factory;
+        private UploadedFileFactoryInterface $uploaded_file_factory,
+        private StreamFactoryInterface $stream_factory,
+    )
+    {
     }
 
     public function process(ServerRequestInterface $request): ServerRequestInterface

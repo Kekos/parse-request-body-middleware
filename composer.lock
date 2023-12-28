@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "33ee5ce5831a2c4bc7b202c93f17056c",
+    "content-hash": "a3d68434ba2e5982bc1f5ad67aa5f0a0",
     "packages": [
         {
             "name": "kekos/multipart-form-data-parser",
@@ -2335,7 +2335,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0",
+        "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
         "ext-json": "*"
     },
     "platform-dev": [],

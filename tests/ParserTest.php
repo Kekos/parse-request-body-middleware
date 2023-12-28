@@ -95,11 +95,7 @@ class ParserTest extends TestCase
         $this->assertEquals($expected_file['name'], $files[$expected_file_key]->getClientFilename());
     }
 
-    /**
-     * @param mixed $value
-     * @return string
-     */
-    private static function safeJsonEncode($value): string
+    private static function safeJsonEncode(mixed $value): string
     {
         $value = json_encode($value);
 

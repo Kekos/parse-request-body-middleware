@@ -9,11 +9,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 
 class ParseRequestBodyMiddleware implements MiddlewareInterface
 {
-    private \Kekos\ParseRequestBodyMiddleware\Parser $parser;
-
-    public function __construct(Parser $parser)
+    public function __construct(
+        private Parser $parser,
+    )
     {
-        $this->parser = $parser;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
