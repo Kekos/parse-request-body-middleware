@@ -8,4 +8,4 @@ Thumbs.db
 *.log
 /.idea/
 /vendor/
-.phpunit.result.cache
+.phpunit.cache/
