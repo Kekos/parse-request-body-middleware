@@ -17,8 +17,10 @@ composer require kekos/multipart-form-data-parser
 | MIME type                         | POST | PUT/PATCH |
 |-----------------------------------|------|-----------|
 | application/json                  |      |           |
-| application/x-www-form-urlencoded | ✓    |           |
-| multipart/form-data               | ✓    |           |
+| application/x-www-form-urlencoded | ✓    | *         |
+| multipart/form-data               | ✓    | *         |
+
+\* Supported by calling `request_parse_body()` in PHP >= 8.4
 
 ### Supported content types this package
 
