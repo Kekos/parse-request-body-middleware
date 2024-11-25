@@ -7,3 +7,7 @@ parameters:
       message: '#jsonDecode|urlQueryDecode#'
       path: src/Parser.php
       identifier: missingType.iterableValue
+    -
+      message: '#should return#'
+      path: src/UploadedFileCollectionFactory.php
+      identifier: return.type

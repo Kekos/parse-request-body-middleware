@@ -2,6 +2,10 @@
 
 PSR-15 middleware for parsing requests with JSON and URI encoded bodies regardless of HTTP method.
 
+Version 2 calls `request_parse_body()` when applicable, which is when a webserver SAPI is used.
+This excludes running in test runners or CLI. It's also important to *not* consume the
+`php://input` stream or else an `\Kekos\ParseRequestBodyMiddleware\ParserException` will be thrown.
+
 ## Install
 
 You can install this package via [Composer](http://getcomposer.org/):
