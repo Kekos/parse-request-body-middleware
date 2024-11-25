@@ -14,22 +14,22 @@ composer require kekos/multipart-form-data-parser
 
 ### Supported content types native PHP
 
-MIME type                         | POST | PUT/PATCH
---------------------------------- | ---- | ---------
-application/json                  |      |
-application/x-www-form-urlencoded |   ✓  |
-multipart/form-data               |   ✓  |
+| MIME type                         | POST | PUT/PATCH |
+|-----------------------------------|------|-----------|
+| application/json                  |      |           |
+| application/x-www-form-urlencoded | ✓    |           |
+| multipart/form-data               | ✓    |           |
 
 ### Supported content types this package
 
 This package acts like a polyfill for unsupported content types (JSON)
 and types only supported in POST methods by PHP.
 
-MIME type                         | POST | PUT/PATCH
---------------------------------- | ---- | ---------
-application/json                  |   ✓  |     ✓
-application/x-www-form-urlencoded |      |     ✓
-multipart/form-data               |      |     ✓
+| MIME type                         | POST | PUT/PATCH |
+|-----------------------------------|------|-----------|
+| application/json                  | ✓    | ✓         |
+| application/x-www-form-urlencoded |      | ✓         |
+| multipart/form-data               |      | ✓         |
 
 ## Usage
 
