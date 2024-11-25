@@ -12,8 +12,10 @@ use function json_decode;
 use function json_last_error;
 use function json_last_error_msg;
 use function parse_str;
+use function request_parse_body;
 
 use const JSON_ERROR_NONE;
+use const PHP_VERSION_ID;
 
 class Parser
 {
@@ -31,21 +33,67 @@ class Parser
         if ($content_type === 'application/json') {
             $request = $request->withParsedBody($this->jsonDecode((string) $request->getBody()));
         } elseif ($request->getMethod() !== 'POST') {
-            switch ($content_type) {
-                case 'application/x-www-form-urlencoded':
-                    $request = $request->withParsedBody($this->urlQueryDecode((string) $request->getBody()));
-                    break;
-
-                case 'multipart/form-data':
-                    $multipart_parser = MultipartFormDataParser::createFromRequest(
-                        $request,
-                        $this->uploaded_file_factory,
-                        $this->stream_factory
-                    );
-
-                    $request = $multipart_parser->decorateRequest($request);
-                    break;
+            if (self::usePolyfill()) {
+                return $this->parseWithPolyfill($request, $content_type);
             }
+
+            return $this->parse($request, $content_type);
+        }
+
+        return $request;
+    }
+
+    private static function usePolyfill(): bool
+    {
+        // PHP 8.4 is required for native parsing
+        if (PHP_VERSION_ID < 80400) {
+            return true;
+        }
+
+        // `request_parse_body()` can only be used when the PHP script is invoked through a web context, e.g. via SAPI
+        if (!isset($_SERVER['CONTENT_TYPE'])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function parse(ServerRequestInterface $request, string $content_type): ServerRequestInterface
+    {
+        switch ($content_type) {
+            case 'application/x-www-form-urlencoded':
+                [$post_body] = request_parse_body();
+                $request = $request->withParsedBody($post_body);
+                break;
+
+            case 'multipart/form-data':
+                [$post_body, $files] = request_parse_body();
+
+                $request = $request
+                    ->withParsedBody($post_body)
+                    ->withUploadedFiles($files);
+                break;
+        }
+
+        return $request;
+    }
+
+    private function parseWithPolyfill(ServerRequestInterface $request, string $content_type): ServerRequestInterface
+    {
+        switch ($content_type) {
+            case 'application/x-www-form-urlencoded':
+                $request = $request->withParsedBody($this->urlQueryDecode((string) $request->getBody()));
+                break;
+
+            case 'multipart/form-data':
+                $multipart_parser = MultipartFormDataParser::createFromRequest(
+                    $request,
+                    $this->uploaded_file_factory,
+                    $this->stream_factory
+                );
+
+                $request = $multipart_parser->decorateRequest($request);
+                break;
         }
 
         return $request;
