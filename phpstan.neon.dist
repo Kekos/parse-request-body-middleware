@@ -2,4 +2,8 @@ includes:
 	- vendor/phpstan/phpstan-phpunit/extension.neon
 
 parameters:
-  checkMissingIterableValueType: false
+  ignoreErrors:
+    -
+      message: '#jsonDecode|urlQueryDecode#'
+      path: src/Parser.php
+      identifier: missingType.iterableValue
