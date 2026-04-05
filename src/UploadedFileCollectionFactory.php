@@ -95,6 +95,7 @@ final class UploadedFileCollectionFactory
         $collection = [];
 
         foreach ($nested_php_file as $struct_key => $values) {
+            // @phpstan-ignore-next-line function.alreadyNarrowedType
             if (!is_array($values)) {
                 continue;
             }

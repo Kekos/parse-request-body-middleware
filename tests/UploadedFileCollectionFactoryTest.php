@@ -93,6 +93,7 @@ final class UploadedFileCollectionFactoryTest extends TestCase
         $this->assertArrayHasKey('multi', $collection);
         $this->assertIsArray($collection['multi']);
         $this->assertArrayHasKey('A', $collection['multi']);
+        // @phpstan-ignore-next-line function.alreadyNarrowedType
         $this->assertInstanceOf(UploadedFileInterface::class, $collection['multi']['A']);
 		$this->assertStringEqualsFile($tmp_nameA, (string) $collection['multi']['A']->getStream());
 		$this->assertEquals($sizeA, $collection['multi']['A']->getSize());
@@ -101,6 +102,7 @@ final class UploadedFileCollectionFactoryTest extends TestCase
 		$this->assertEquals($typeAB, $collection['multi']['A']->getClientMediaType());
 
         $this->assertArrayHasKey('B', $collection['multi']);
+        // @phpstan-ignore-next-line function.alreadyNarrowedType
         $this->assertInstanceOf(UploadedFileInterface::class, $collection['multi']['B']);
 		$this->assertStringEqualsFile($tmp_nameB, (string) $collection['multi']['B']->getStream());
 		$this->assertEquals($sizeB, $collection['multi']['B']->getSize());
