@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+namespace Kekos\ParseRequestBodyMiddleware\Tests;
 
 use Kekos\ParseRequestBodyMiddleware\UploadedFileCollectionFactory;
 use Nyholm\Psr7\Factory\Psr17Factory;
